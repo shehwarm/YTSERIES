@@ -2,15 +2,15 @@
 using namespace std;
 
 int main() {
-    int age = 25;
-    char grade = 'a';
-    float PI = 3.14F;
+    int age;
+    cout << "enter age : ";
+    cin >> age;
 
-    bool isSafe = true;
-    double price = 100.99;
+    if(age >= 18) {
+        cout << "you can vote\n";
+    }else {
+        cout << "you can't vote\n";
+    }
 
-    cout << isSafe << endl; //true -> 1 & false -> 0
     return 0;  
 }
-git config --global user.email "maryam.dev93@gmail.com"
-  git config --global user.name "SehwarMaryam"
