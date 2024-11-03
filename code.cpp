@@ -2,16 +2,13 @@
 using namespace std;
 
 int main() {
-   int n = 7;
-   bool isPrime = true;
+   int num1 = 7;
+   int num2 = 6;
+    
+   int sum = num1 + num2; 
 
-   for(int i=2; i<=n-1; i++) {
-       if(n % i == 0) { //non prime
-           isPrime = false;
-           break;
-
-       }
-   }
+   cout << sum << endl;
+   
     
     return 0;
 } 
