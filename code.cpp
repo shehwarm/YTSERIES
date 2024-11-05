@@ -2,16 +2,15 @@
 using namespace std;
 
 int main() {
-    int n = 20;
-    int evenSum = 0;
+    int age;
+    cout << "enter age : ";
+    cin >> age;
 
-    for(int i=1; i<=n; i++) {
-        if(i%2 = 0) {
-            evenSum += i;
-        }
+    if(age >= 18) {
+        cout << "you can vote\n";
+    }else {
+        cout << "you can't vote\n";
     }
-   
-    cout << "even sum = " << evenSum << endl;
-    return 0;
-} 
 
+    return 0;  
+}
