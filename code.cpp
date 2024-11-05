@@ -2,13 +2,16 @@
 using namespace std;
 
 int main() {
-   int num1 = 12;
-   int num2 = 6;
-    
-   int divide = num1 / num2; 
+    int n = 20;
+    int evenSum = 0;
 
-   cout << divide << endl;
+    for(int i=1; i<=n; i++) {
+        if(i%2 = 0) {
+            evenSum += i;
+        }
+    }
    
-    
+    cout << "even sum = " << evenSum << endl;
     return 0;
 } 
+
