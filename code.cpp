@@ -2,14 +2,10 @@
 using namespace std;
 
 int main() {
-    int age;
-    cout << "enter age : ";
-    cin >> age;
+    int n = 45;
 
-    if(age >= 18) {
-        cout << "you can vote\n";
-    }else {
-        cout << "you can't vote\n";
+    if(n >= 0)  {
+        cout << "n is positive\n";
     }
 
     return 0;  
