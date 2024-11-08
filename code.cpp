@@ -2,12 +2,14 @@
 using namespace std;
 
 int main() {
-    int n = 10;
-    for(int i=1; i<=n; i++){
-        int m = 5;
-        for(int i=1; i<=m; i++) {
-            cout << "*";
-        }
-        cout << endl;
-    }
+    
+    int count;
+    cout << "Enter integer ";
+    cin >> count;
+    cout << "pre increment value = " << ++count << endl;
+    cout << "pre decrement value = " << --count << endl;
+    cout << "post increment value = " << count ++ << endl;
+    cout << "post decrement value = " << count -- << endl;
+
+    return 0;
 }
