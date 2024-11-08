@@ -3,18 +3,20 @@ using namespace std;
 
 int main() {
     
-    int num;
-    int numSquare;
-     
-     cout << "Enter number ";
-     cin >> num ;
+    int marks = 79;
+    if(marks > 80 ) {
+        cout << " You got an A grade";
+    }
+    
+    else if(marks > 70 && marks <= 80 ){
+        cout << " You got a B grade";
+    }
 
-    if(num>=10 && num<=100) {
-        numSquare = num * num;
-        cout << "Square of the " << num << " is =" << numSquare << endl;
+    else {
+        cout << " You are fail";
     }
-    else{
-        cout << "input error/n";
-    }
+
+    
+    
     return 0;
 }
