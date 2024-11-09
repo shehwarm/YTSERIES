@@ -2,21 +2,35 @@
 using namespace std;
 
 int main() {
-    
-    int marks = 79;
-    if(marks > 80 ) {
-        cout << " You got an A grade";
-    }
-    
-    else if(marks > 70 && marks <= 80 ){
-        cout << " You got a B grade";
-    }
+    int day;
+    cout << "Enter a number from 0 to 6: ";
+    cin >> day;
 
-    else {
-        cout << " You are fail";
-    }
-
-    
-    
+    switch (day) {
+        case 0:
+           cout << "Sunday" << endl;
+           break;
+        case 1:
+           cout << "Monday" << endl;
+           break;
+        case 2:
+           cout << "Tuesday" << endl;
+           break;
+        case 3:
+           cout << "Wednesday" << endl;
+           break;
+        case 4:
+           cout << "Thursday" << endl;
+           break;
+        case 5:
+           cout << "Friday" << endl;
+           break;
+        case 6:
+           cout << "Saturday" << endl;
+           break;
+        default:
+           cout << "Invalid input" << endl;
+           break;
+    }  
     return 0;
 }
