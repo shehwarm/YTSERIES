@@ -1,16 +1,18 @@
 #include <iostream>
 using namespace std;
-
 int main() {
-    int i;
-    for(i = 1; i<= 10; ++i) {
-
-        for(int m = 1; m<= 10; ++m) {
-            
-            cout << i << " x " << m << " = " << i * m << endl;
+    for (int num = 2; num <= 100; num++) {
+        bool isPrime = true;  
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                isPrime = false;  
+                break;
+            }
+        }  
+        if (isPrime) {
+            cout << num << " ";
         }
-        cout << endl;
     }
-      return 0;
-
+    cout << endl; 
+    return 0;
 }
