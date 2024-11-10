@@ -1,29 +1,13 @@
 #include <iostream>
-using namespace std;     
-
+using namespace std;
 int main() {
-    int num1, num2;
-    float num;
-   
-    cout << "Enter first integers: ";
-    cin >> num1;
-    cout<< "Enter second integers: ";
-    cin>> num2;
-    cout << "Enter a floating-point number: ";
-    cin >> num;
-    
-
-    float sum = num1 + num2;
-    float sumAsfloat= (float)sum;
-    
-    float product = num1 * num2; 
-       float productAsfloat= (float)product;
-    
-    
-    int division = (int)(num / sum); 
-
-     cout << "Sum as float: " << sumAsfloat << endl;
-         cout << "Product as float: " << productAsfloat << endl;
-             cout << "Division result as int: " << division << endl;
+    int number, rev = 0;
+    cout << "Enter a number: ";
+    cin >> number;
+    do {
+        rev = rev * 10 + (number % 10);  
+        number = number / 10;  
+    } while (number != 0);  
+    cout << "Reversed number: " << rev << endl;
     return 0;
 }
