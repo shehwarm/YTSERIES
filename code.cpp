@@ -2,16 +2,19 @@
 using namespace std;
 
 int main() {
-    int num[] = {5, 15, 22, 1, -15, 24};
-   int size = 6;
-   int largest = INT_MIN;
-
-   for(int i=0; i < size; i++){
-    if (num[i] > largest) {
-        largest = num[i];
+    int size = 4;
+    int marks[size] = {15, 34, 44, 64};
+    int index = -1;
+    int smallest = INT_MAX;
+     
+     for(int i=0; i < size; i++){
+        if(marks[i] < smallest) {
+            smallest = marks[i];
+            index = i;
+        }
     }
-   }
-  cout << "largest: " << largest << endl;
- 
+     cout << "Smallest value:" << smallest << endl;
+     cout << "Index: " << index << endl;
+
    return 0;
-}
+} 
