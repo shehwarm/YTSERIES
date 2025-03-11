@@ -1,42 +1,39 @@
 #include <iostream>
-#include <string>
+#include<string>
 using namespace std;
 
-// Class definition
-class Car {
-public:    // Access specifier
-    // Data members (attributes)
-    string brand;
-    int year;
-    float speed;
+class Employee{
+    public:
+      Employee(){
+            color="yellow";
+      }
+      string name;
+      string company;
+      int age;
+      string color;
 
-    // Member function (method)
-    void accelerate() {
-        speed += 10;
-        cout << "Speed increased to " << speed << " km/h\n";
-    }
+    void IntroduceYourself(){
+        cout<<" Name = "<<name<<endl;
+        cout<<" Company = "<<company<<endl;
+        cout<<" Age = "<<age<<endl;
+       
+    }  
 };
 
-int main() {
-    // Creating objects of Car class
-    Car car1;  // Object 1
-    Car car2;  // Object 2
+int main(){
+    Employee employee1;
+    employee1.name = "Maryam";
+    employee1.company = "Google";
+    employee1.age = 22;
+    employee1.IntroduceYourself();
 
-    // Accessing and setting object properties
-    car1.brand = "Toyota";
-    car1.year = 2020;
-    car1.speed = 0;
-
-    car2.brand = "Ford";
-    car2.year = 2022;
-    car2.speed = 50;
-
-    // Using object methods and properties
-    cout << car1.brand << " " << car1.year << endl;
-    car1.accelerate();
-
-    cout << car2.brand << " " << car2.year << endl;
-    car2.accelerate();
-
+    Employee employee2;
+    employee2.name = "Shehwar";
+    employee2.company = "Netflix";
+    employee2.age = 23;
+    employee2.IntroduceYourself();
+    cout<<employee1.color<<endl;
+    cout<<employee2.color<<endl;
     return 0;
+
 }
