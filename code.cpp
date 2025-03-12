@@ -2,34 +2,33 @@
 #include <string>
 using namespace std;
 
-class Employee{
-    
-      string name;
-      string company;
+class Student {
+public:
+    string name;
+    double* gpaPtr;
 
-    public:
-      Employee(string n, string c){
-            name = n;
-            company = c;
-      }
-          
-      Employee(Employee &orgObj) {
-            name = orgObj.name;
-            company = orgObj.company;
-      }
+    // Constructor takes a double value, not a pointer
+    Student(string n, double g) {
+        name = n;
+        gpaPtr = new double; // Dynamically allocate memory
+        *gpaPtr = g;         // Assign the value to the allocated memory
+        cout << "Constructor called for " << name << endl;
+    }
 
-    void getInfo(){
-        cout<<" Name = "<<name<<endl;
-        cout<<" Company = "<<company<<endl;
-        
-       
-    }  
+    // Destructor to free dynamically allocated memory
+    ~Student() {
+        delete gpaPtr; // Safe because gpaPtr was allocated with new
+        cout << "Destructor called for " << name << endl;
+    }
+
+    void getInfo() {
+        cout << "Name = " << name << endl;
+        cout << "GPA = " << *gpaPtr << endl;
+    }
 };
 
-int main(){
-    Employee employee1("Maryam", "Amazon");
-    Employee employee2(employee1);
-    employee2.getInfo();
-
-   return 0;
+int main() {
+    Student s1("Maryam", 4.0); // Pass a double value
+    s1.getInfo();
+    return 0; // Destructor called automatically when s1 goes out of scope
 }
