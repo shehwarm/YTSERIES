@@ -7,9 +7,8 @@ public:
     string name;
     int age;
 
-    Person(string n, int a) {
-        name = n;
-        age = a;
+    Person() {
+       cout<<"Person Constructor"<<endl;
     }
 };
 
@@ -17,8 +16,9 @@ public:
     public:
        int rollno;
 
-       Student(string n, int a, int r) : Person(n, a) {
-        rollno = r; }
+       Student() {
+              cout<<"Student Constructor"<<endl;
+        }
     
 
        void getInfo() {
