@@ -2,47 +2,49 @@
 #include <string>
 using namespace std;
 
-class Person {
+class Student {
+
 public:
     string name;
-    int age;
+    int rollno;
 
-    Person(string n, int a) {
+    Student(string n, int r) {
         name = n;
-        age = a;
-    }
-};
+        rollno = r;}
 
- class Student : public Person {
+       };      
+
+ class Teacher {
     public:
-       int rollno;
+         string subject;
+         double salary;
 
-       Student(string n, int a, int r) : Person(n, a) {
-        rollno = r; }
-       };
-
+         Teacher(string s, double sal) {
+            subject = s;
+            salary = sal;
+        }
+ };
     
-    class GradStudent : public Student {
+    class TA:public Student, public Teacher {
         public:
-             string researchArea;
-        
-           GradStudent(string n, int a, int r, string ra) : Student(n, a, r) {
-              researchArea = ra;
-           }
-        
+
+    TA(string n, int r, string s, double sal)  : Student(n, r), Teacher(s, sal) {
+
+    }
+
              void getInfo() {
               cout << "Name = " << name << endl;
-              cout << "Age = " << age << endl;
-              cout << "Roll No = " << rollno << endl;
-              cout << "Research Area = " << researchArea << endl;
+              cout << "Age = " << rollno << endl;
+              cout << "Roll No = " << subject << endl;
+              cout << "Salary = " << salary<<endl;
          }
        
  };
     
 int main() {
-    GradStudent s1("Amna", 22, 21345, "Machine Learning");
+   TA t1("Amna", 22, "Machine Learning",22000);
     
-    s1.getInfo();
+  t1.getInfo();
     return 0; 
 }
 
