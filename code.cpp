@@ -2,49 +2,53 @@
 #include <string>
 using namespace std;
 
-class Student {
-
-public:
-    string name;
-    int rollno;
-
-    Student(string n, int r) {
-        name = n;
-        rollno = r;}
-
-       };      
-
- class Teacher {
+class Person{
     public:
-         string subject;
-         double salary;
-
-         Teacher(string s, double sal) {
-            subject = s;
-            salary = sal;
-        }
- };
-    
-    class TA:public Student, public Teacher {
-        public:
-
-    TA(string n, int r, string s, double sal)  : Student(n, r), Teacher(s, sal) {
-
+    string name;
+    int age;
+    Person(string n, int a){
+        name = n;
+        age = a;
     }
+};
+class Student : public Person {
+    public:
+    int rollno;
+    Student(string n, int a , int r) : Person (n,r) {
+        rollno = r;
+    }
+    void getInfo() {
+        cout << "Name = " << name << endl;
+        cout << "Age = " << age << endl;
+        cout << "Roll No = " <<rollno<<endl;
+    }
+};
 
-             void getInfo() {
-              cout << "Name = " << name << endl;
-              cout << "Age = " << rollno << endl;
-              cout << "Roll No = " << subject << endl;
-              cout << "Salary = " << salary<<endl;
-         }
+class Teacher : public Person {
+    public:
+    string subject;
+    double salary;
+    Teacher(string n, int a, string s, double sal) : Person(n,a) {
+        subject = s;
+        salary = sal;
+    }
+    void getInfo() {
+        cout << "Name = " << name << endl;
+        cout << "Age = " << age<<endl;
+        cout<< "Subject = " << subject<<endl;
+        cout << "Salary = " << salary<<endl;
+}
+
+
        
  };
     
 int main() {
-   TA t1("Amna", 22, "Machine Learning",22000);
-    
-  t1.getInfo();
+    Student s1("Ali",20,2345);
+    s1.getInfo();
+
+    Teacher t1("Amna", 22, "Machine Learning",22000);
+    t1.getInfo();
     return 0; 
 }
 
