@@ -1,25 +1,37 @@
 #include <iostream>
 using namespace std;
 
-class Complex {
+class Animal {
 public:
-    int real, imag;
-
-    Complex(int r, int i) : real(r), imag(i) {}
-
-    // Overloading the '+' operator
-    Complex operator+(const Complex& obj) {
-        return Complex(real + obj.real, imag + obj.imag);
+    virtual void makeSound() { // Virtual function
+        cout << "Animal makes a sound" << endl;
     }
+};
 
-    void display() {
-        cout << real << " + " << imag << "i" << endl;
+class Dog : public Animal {
+public:
+    void makeSound() override { // Overrides base class method
+        cout << "Dog barks" << endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void makeSound() override {
+        cout << "Cat meows" << endl;
     }
 };
 
 int main() {
-    Complex c1(3, 4), c2(1, 2);
-    Complex c3 = c1 + c2; // Calls overloaded + operator
-    c3.display();         // Output: 4 + 6i
+    Animal* a; // Pointer to base class
+    Dog d;
+    Cat c;
+
+    a = &d;
+    a->makeSound();  // Output: Dog barks
+
+    a = &c;
+    a->makeSound();  // Output: Cat meows
+
     return 0;
 }
