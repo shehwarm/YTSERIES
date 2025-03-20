@@ -1,23 +1,24 @@
 #include <iostream>
 using namespace std;
 
-class Student {
+class Print{
 public:
-       string name;
+       
 
-       Student () {
-        cout<< "this is non parameterized constructor"<<endl;
+       void show (int x) {
+        cout<< " int : "<<x<<endl;
        }
-
-       Student(string n) {
-        name = n;
-        cout<< "this is parameterized constructor"<<endl;
+       void show (char ch) {
+        cout<< " character : "<<ch<<endl;
        }
+       
 
     };
 
 int main() {
-    Student s1("Maryam");
+   Print p1;
+   p1.show(5);
+   p1.show('A');
  
     return 0;
 }
