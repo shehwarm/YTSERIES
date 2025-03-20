@@ -1,24 +1,20 @@
 #include <iostream>
 using namespace std;
 
-class Print{
-public:
-       
-
-       void show (int x) {
-        cout<< " int : "<<x<<endl;
-       }
-       void show (char ch) {
-        cout<< " character : "<<ch<<endl;
-       }
-       
-
-    };
-
+class Parent {
+    public:
+        void show() {
+            cout<< "Parent class"<<endl;
+        }
+};
+class Child : public Parent {
+    public:
+        void show() {
+            cout<< "Child class"<<endl;
+        }
+};
 int main() {
-   Print p1;
-   p1.show(5);
-   p1.show('A');
- 
+    Child c1;
+    c1.show();
     return 0;
 }
