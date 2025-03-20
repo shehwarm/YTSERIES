@@ -1,37 +1,23 @@
 #include <iostream>
 using namespace std;
 
-class Animal {
+class Student {
 public:
-    virtual void makeSound() { // Virtual function
-        cout << "Animal makes a sound" << endl;
-    }
-};
+       string name;
 
-class Dog : public Animal {
-public:
-    void makeSound() override { // Overrides base class method
-        cout << "Dog barks" << endl;
-    }
-};
+       Student () {
+        cout<< "this is non parameterized constructor"<<endl;
+       }
 
-class Cat : public Animal {
-public:
-    void makeSound() override {
-        cout << "Cat meows" << endl;
-    }
-};
+       Student(string n) {
+        name = n;
+        cout<< "this is parameterized constructor"<<endl;
+       }
+
+    };
 
 int main() {
-    Animal* a; // Pointer to base class
-    Dog d;
-    Cat c;
-
-    a = &d;
-    a->makeSound();  // Output: Dog barks
-
-    a = &c;
-    a->makeSound();  // Output: Cat meows
-
+    Student s1("Maryam");
+ 
     return 0;
 }
