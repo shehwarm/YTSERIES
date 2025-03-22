@@ -1,27 +1,33 @@
 #include <iostream>
 using namespace std;
 
-class Parent {
-    public:
-        void show() {
-            cout<< "Parent class"<<endl;
-        }
+// Abstract class
+class Shape {
+public:
+    // Pure virtual function
+    virtual void draw() = 0; 
+};
 
-        virtual void display() {
-            cout<< "hello from parent"<<endl;
-        }
+// Derived class implementing abstract method
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing a Circle" << endl;
+    }
 };
-class Child : public Parent {
-    public:
-        void show() {
-            cout<< "Child class"<<endl;
-        }
-        void display() {
-            cout<< "hello from child"<<endl;
-        }
+
+class Rectangle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing a Rectangle" << endl;
+    }
 };
+
 int main() {
-    Child c1;
-    c1.display();
-    return 0;
+    Shape* shape1 = new Circle();
+    Shape* shape2 = new Rectangle();
+    
+    shape1->draw();  // Output: Drawing a Circle
+    shape2->draw();  // Output: Drawing
+
 }
