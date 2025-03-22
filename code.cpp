@@ -1,33 +1,34 @@
 #include <iostream>
 using namespace std;
 
-// Abstract class
-class Shape {
+class Bank {
 public:
-    // Pure virtual function
-    virtual void draw() = 0; 
+    virtual void loanInterestRate() = 0; // Pure virtual function
 };
 
-// Derived class implementing abstract method
-class Circle : public Shape {
+class SBI : public Bank {
 public:
-    void draw() override {
-        cout << "Drawing a Circle" << endl;
+    void loanInterestRate() override {
+        cout << "SBI Loan Interest Rate: 7%" << endl;
     }
 };
 
-class Rectangle : public Shape {
+class HDFC : public Bank {
 public:
-    void draw() override {
-        cout << "Drawing a Rectangle" << endl;
+    void loanInterestRate() override {
+        cout << "HDFC Loan Interest Rate: 8.5%" << endl;
     }
 };
 
 int main() {
-    Shape* shape1 = new Circle();
-    Shape* shape2 = new Rectangle();
-    
-    shape1->draw();  // Output: Drawing a Circle
-    shape2->draw();  // Output: Drawing
+    Bank* bank1 = new SBI();
+    Bank* bank2 = new HDFC();
 
+    bank1->loanInterestRate();  // Output: SBI Loan Interest Rate: 7%
+    bank2->loanInterestRate();  // Output: HDFC Loan Interest Rate: 8.5%
+
+    delete bank1;
+    delete bank2;
+
+    return 0;
 }
