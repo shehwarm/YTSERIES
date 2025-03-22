@@ -1,34 +1,30 @@
 #include <iostream>
 using namespace std;
 
-class Bank {
-public:
-    virtual void loanInterestRate() = 0; // Pure virtual function
-};
+class Car {
+private:
+    int speed; // Hidden data member
 
-class SBI : public Bank {
 public:
-    void loanInterestRate() override {
-        cout << "SBI Loan Interest Rate: 7%" << endl;
+    void setSpeed(int s) { 
+        if (s > 200) 
+            cout << "Speed too high!" << endl;
+        else 
+            speed = s; 
     }
-};
-
-class HDFC : public Bank {
-public:
-    void loanInterestRate() override {
-        cout << "HDFC Loan Interest Rate: 8.5%" << endl;
+    
+    void getSpeed() {
+        cout << "Car speed: " << speed << " km/h" << endl;
     }
 };
 
 int main() {
-    Bank* bank1 = new SBI();
-    Bank* bank2 = new HDFC();
+    Car myCar;
+    myCar.setSpeed(180);
+    myCar.getSpeed();  // Output: Car speed: 180 km/h
 
-    bank1->loanInterestRate();  // Output: SBI Loan Interest Rate: 7%
-    bank2->loanInterestRate();  // Output: HDFC Loan Interest Rate: 8.5%
-
-    delete bank1;
-    delete bank2;
+    myCar.setSpeed(250); // Output: Speed too high!
 
     return 0;
 }
+
