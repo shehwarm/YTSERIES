@@ -1,161 +1,89 @@
 #include <iostream>
+#include <vector>
 #include <string>
+
 using namespace std;
 
-class PopSalon {
+class SubmarineSandwich {
 private:
-    string name, mobileNumber, emailAddress, flavor, quality;
-    double totalAmount;
-    bool giftWrapper, chocolateSauce, caramelSauce, meltedCheese;
-    string packSize;
-    
+    string breadType; // Type of bread (e.g., Italian, Whole Wheat, etc.)
+    vector<string> fillings; // List of fillings (e.g., Mortadella, Turkey, etc.)
+    vector<string> cheeses; // List of cheeses (e.g., Cheddar, Swiss, etc.)
+    vector<string> sauces; // List of sauces (e.g., Mayo, Mustard, etc.)
+    vector<string> vegetables; // List of vegetables (e.g., Lettuce, Tomato, etc.)
+    bool toasted; // Whether the sandwich is toasted or not
+
 public:
-    PopSalon() {
-        totalAmount = 0;
-        giftWrapper = false;
-        chocolateSauce = false;
-        caramelSauce = false;
-        meltedCheese = false;
+    // Constructor
+    SubmarineSandwich(string bread, bool isToasted = false)
+        : breadType(bread), toasted(isToasted) {}
+
+    // Function to add a filling
+    void addFilling(const string& filling) {
+        fillings.push_back(filling);
     }
 
-    void inputDetails() {
-        cout << "Enter your name: ";
-        getline(cin, name);
-        cout << "Enter your mobile number: ";
-        getline(cin, mobileNumber);
-        cout << "Enter your email address: ";
-        getline(cin, emailAddress);
-
-        cout << "How would you rate the service quality (good/neutral/bad)? ";
-        getline(cin, quality);
+    // Function to add cheese
+    void addCheese(const string& cheese) {
+        cheeses.push_back(cheese);
     }
 
-    void showMenu() {
-        int choice;
-        cout << "\nPopSalon Ice Cream Vendor Menu:\n";
-        cout << "1. Chocolate\n2. English Toffee\n3. Salted Caramel\n4. Caramel\n5. Jalapeno\n";
-        cout << "6. Cheese\n7. Spiced Cheese\n8. Plain Salted\n9. Buttered\n10. Salt and Pepper\n11. Garlic\n";
-        cout << "Please select the flavor (1-11): ";
-        cin >> choice;
-
-        switch(choice) {
-            case 1: flavor = "Chocolate"; break;
-            case 2: flavor = "English Toffee"; break;
-            case 3: flavor = "Salted Caramel"; break;
-            case 4: flavor = "Caramel"; break;
-            case 5: flavor = "Jalapeno"; break;
-            case 6: flavor = "Cheese"; break;
-            case 7: flavor = "Spiced Cheese"; break;
-            case 8: flavor = "Plain Salted"; break;
-            case 9: flavor = "Buttered"; break;
-            case 10: flavor = "Salt and Pepper"; break;
-            case 11: flavor = "Garlic"; break;
-            default:
-                cout << "Invalid input. Please try again.\n";
-                showMenu();
-                return;
-        }
+    // Function to add a sauce
+    void addSauce(const string& sauce) {
+        sauces.push_back(sauce);
     }
 
-    void selectPackSize() {
-        int packChoice;
-        cout << "\nSelect the pack size:\n";
-        cout << "1. Small (Rs. 100)\n2. Medium (Rs. 250)\n3. Large (Rs. 500)\n4. Tin (Rs. 750)\n";
-        cout << "Please select the pack size (1-4): ";
-        cin >> packChoice;
-
-        switch(packChoice) {
-            case 1: 
-                packSize = "Small"; 
-                totalAmount += 100; 
-                break;
-            case 2: 
-                packSize = "Medium"; 
-                totalAmount += 250; 
-                break;
-            case 3: 
-                packSize = "Large"; 
-                totalAmount += 500; 
-                break;
-            case 4: 
-                packSize = "Tin"; 
-                totalAmount += 750; 
-                break;
-            default:
-                cout << "Invalid input. Please try again.\n";
-                selectPackSize();
-                return;
-        }
+    // Function to add a vegetable
+    void addVegetable(const string& vegetable) {
+        vegetables.push_back(vegetable);
     }
 
-    void addToppings() {
-        int toppingChoice;
-        cout << "\nSelect additional toppings (enter 0 to skip):\n";
-        cout << "1. Chocolate Sauce (Rs. 50)\n2. Caramel Sauce (Rs. 30)\n3. Melted Cheese (Rs. 60)\n";
-        cout << "Please select toppings (1-3): ";
-        cin >> toppingChoice;
-
-        if (toppingChoice == 1) {
-            chocolateSauce = true;
-            totalAmount += 50;
-        } else if (toppingChoice == 2) {
-            caramelSauce = true;
-            totalAmount += 30;
-        } else if (toppingChoice == 3) {
-            meltedCheese = true;
-            totalAmount += 60;
+    // Function to display the sandwich details
+    void displaySandwich() const {
+        cout << "Submarine Sandwich Details:\n";
+        cout << "Bread Type: " << breadType << "\n";
+        cout << "Toasted: " << (toasted ? "Yes" : "No") << "\n";
+        
+        cout << "Fillings: ";
+        for (const auto& filling : fillings) {
+            cout << filling << " ";
         }
-    }
+        cout << "\n";
 
-    void addGiftWrapper() {
-        char choice;
-        cout << "\nDo you want a gift wrapper for Rs. 50 (y/n)? ";
-        cin >> choice;
-        if (choice == 'y' || choice == 'Y') {
-            giftWrapper = true;
-            totalAmount += 50;
+        cout << "Cheeses: ";
+        for (const auto& cheese : cheeses) {
+            cout << cheese << " ";
         }
-    }
+        cout << "\n";
 
-    void displayBill() {
-        cout << "\n        PopSalon Final Bill \n";
-        cout << "Name: " << name << "\n";
-        cout << "Mobile: " << mobileNumber << "\n";
-        cout << "Email: " << emailAddress << "\n";
-        cout << "Flavor: " << flavor << "\n";
-        cout << "Pack Size: " << packSize << "\n";
-
-        if (chocolateSauce) {
-            cout << "Topping: Chocolate Sauce\n";
+        cout << "Sauces: ";
+        for (const auto& sauce : sauces) {
+            cout << sauce << " ";
         }
-        if (caramelSauce) {
-            cout << "Topping: Caramel Sauce\n";
-        }
-        if (meltedCheese) {
-            cout << "Topping: Melted Cheese\n";
-        }
+        cout << "\n";
 
-        if (giftWrapper) {
-            cout << "Gift Wrapper: Yes\n";
+        cout << "Vegetables: ";
+        for (const auto& vegetable : vegetables) {
+            cout << vegetable << " ";
         }
-
-        cout << "Total Amount: Rs. " << totalAmount << "\n";
-    }
-
-    ~PopSalon() {
-        cout << "\nThank you for shopping at PopSalon! Have a great day!\n";
+        cout << "\n";
     }
 };
 
 int main() {
-    PopSalon customer;
-    
-    customer.inputDetails();
-    customer.showMenu();
-    customer.selectPackSize();
-    customer.addToppings();
-    customer.addGiftWrapper();
-    customer.displayBill();
+    // Create a submarine sandwich
+    SubmarineSandwich mySandwich("Italian", true);
+    mySandwich.addFilling("Mortadella");
+    mySandwich.addFilling("Turkey");
+    mySandwich.addCheese("Provolone");
+    mySandwich.addSauce("Mayo");
+    mySandwich.addSauce("Mustard");
+    mySandwich.addVegetable("Lettuce");
+    mySandwich.addVegetable("Tomato");
+    mySandwich.addVegetable("Onion");
+
+    // Display the sandwich details
+    mySandwich.displaySandwich();
 
     return 0;
 }
