@@ -1,57 +1,42 @@
 #include <iostream>
+#include <math.h>
+#include <string>
 using namespace std;
 
-class EvenNumber {
+class Point {
 private:
-    int value;
+    int x;
+    int y;
 
 public:
-    EvenNumber() {
-        value = 0;
+    void setX(int newX) { x = newX; }
+    void setY(int newY) { y = newY; }
+
+    int getX() const { return x; }
+    int getY() const { return y; }
+
+    string print() const {
+        return "(" + to_string(x) + ", " + to_string(y) + ")";
     }
 
-    void setValue(int val) {
-        if (val % 2 != 0) {
-            cout <<  << val << " is not even. Adjusting to " << (val + 1) << endl;
-            value = val + 1;
-        } else {
-            value = val;
-        }
-    }
-
-    int getValue() const {
-        return value;
-    }
-
-    EvenNumber getNext() const {
-        EvenNumber next;
-        next.setValue(value + 2);
-        return next;
-    }
-
-    EvenNumber getPrevious() const {
-        EvenNumber prev;
-        prev.setValue(value - 2);
-        return prev;
+    double distanceTo(const Point& other) const {
+        int xDiff = x - other.x;
+        int yDiff = y - other.y;
+        return sqrt(pow(xDiff, 2) + pow(yDiff, 2));
     }
 };
 
 int main() {
-    EvenNumber num1;  
-    cout << "Initial even number: " << num1.getValue() << endl;
+    Point p1, p2;
+    p1.setX(5);
+    p1.setY(7);
+    p2.setX(3);
+    p2.setY(9);
 
-    num1.setValue(4);
-    cout << "Current even number: " << num1.getValue() << endl;
+    cout << "Point 1: " << p1.print() << endl;
+    cout << "Point 2: " << p2.print() << endl;
 
-    EvenNumber next = num1.getNext();
-    cout << "Next even number: " << next.getValue() << endl;
-
-    EvenNumber prev = num1.getPrevious();
-    cout << "Previous even number: " << prev.getValue() << endl;
-
-    num1.setValue(7); 
-    cout << "Adjusted even number: " << num1.getValue() << endl;
+    cout << "Distance between points: " << p1.distanceTo(p2) << endl;
 
     return 0;
 }
-
