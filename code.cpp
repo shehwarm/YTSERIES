@@ -1,36 +1,41 @@
 #include <iostream>
-#include <string>
+#include <cmath>
 using namespace std;
 
-class Library {
-private:
-    string libraryName;
+class Shape {
 public:
-    Library(string name) : libraryName(name) {}
-    string getLibraryName() {
-        return libraryName;
+    virtual void displayArea() = 0;
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    void displayArea() override {
+        cout << "Area of Circle: " << 3.14159 * radius * radius << endl;
     }
 };
 
-class Book {
+class Rectangle : public Shape {
 private:
-    string title;
-    Library* library; 
+    double width, height;
 public:
-    Book(string t, Library* lib) : title(t), library(lib) {}
-    void display() {
-        cout << "Book Title: " << title << ", Library: " << library->getLibraryName() << endl;
+    Rectangle(double w, double h) : width(w), height(h) {}
+    void displayArea() override {
+        cout << "Area of Rectangle: " << width * height << endl;
     }
 };
 
 int main() {
-    Library lib("City Central Library");
+    Shape* s1 = new Circle(5.0);
+    Shape* s2 = new Rectangle(4.0, 6.0);
 
-    Book b1("C++ Programming", &lib);
-    Book b2("Data Structures", &lib);
+    s1->displayArea();
+    s2->displayArea();
 
-    b1.display();
-    b2.display();
+    delete s1;
+    delete s2;
 
     return 0;
 }
